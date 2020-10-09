@@ -1,5 +1,7 @@
 # Analysis of third-party JavaScript, Python and Ruby packages in DockerHub images
 
+[![DOI](https://zenodo.org/badge/302613922.svg)](https://zenodo.org/badge/latestdoi/302613922)
+
 This repository represents a replication package for our analysis on third-party packages in DockerHub images
 
 This replication package requires Python 3.5+ to be installed, and all the dependencies listed in ``requirements.txt``.
