@@ -34,24 +34,24 @@ def download(tab):
 
 def get_os(image):
 
-	os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'cat /etc/issue' > /home/ahmed/libraries_docker/pulled/os/"+ image.replace('/',':')+"_r1")
-	os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'cat /etc/os-release' > /home/ahmed/libraries_docker/pulled/os/"+ image.replace('/',':')+"_r2")
+	os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'cat /etc/issue' > ../data/pulled/os/"+ image.replace('/',':')+"_r1")
+	os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'cat /etc/os-release' > ../data/pulled/os/"+ image.replace('/',':')+"_r2")
 
 def get_packages(image, base):
 
 	if base == 'node':
-		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'npm list -g' > /home/ahmed/libraries_docker/pulled/packages/node/"+ image.replace('/',':'))
+		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'npm list -g' > ../data/pulled/packages/node/"+ image.replace('/',':'))
 
 	elif base == 'python':
-		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'pip2 freeze' > /home/ahmed/libraries_docker/pulled/packages/python/"+ image.replace('/',':')+"_2")
-		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'pip3 freeze' > /home/ahmed/libraries_docker/pulled/packages/python/"+ image.replace('/',':')+"_3")
+		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'pip2 freeze' > ../data/pulled/packages/python/"+ image.replace('/',':')+"_2")
+		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'pip3 freeze' > ../data/pulled/packages/python/"+ image.replace('/',':')+"_3")
 
 	else:
-		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'gem list' > /home/ahmed/libraries_docker/pulled/packages/ruby/"+ image.replace('/',':'))
+		os.system("docker run --entrypoint '/bin/bash' " + image + " -c 'gem list' > ../data/pulled/packages/ruby/"+ image.replace('/',':'))
 
 
 def main():
-	images = pd.read_csv('../../libraries_docker/csv/to_pull.csv', dtype=object)
+	images = pd.read_csv('../data/to_pull.csv', dtype=object)
 	candidates = []
 	for row in images.iterrows():
 		image = row[1]['image']
